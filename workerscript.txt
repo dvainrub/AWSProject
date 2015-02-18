@@ -1,0 +1,22 @@
+#!/bin/bash 
+
+#Bash Script for Worker
+
+#Download Stanford libraries
+
+wget http://repo1.maven.org/maven2/com/googlecode/efficient-java-matrix-library/ejml/0.23/ejml-0.23.jar -O //home/ec2-user/ejml-0.23.jar
+
+wget http://repo1.maven.org/maven2/edu/stanford/nlp/stanford-corenlp/3.3.0/stanford-corenlp-3.3.0.jar -O //home/ec2-user/stanford-corenlp-3.3.0.jar
+
+wget http://repo1.maven.org/maven2/edu/stanford/nlp/stanford-corenlp/3.3.0/stanford-corenlp-3.3.0-models.jar -O //home/ec2-user/stanford-corenlp-3.3.0-models.jar
+
+wget http://garr.dl.sourceforge.net/project/jollyday/releases/0.4.7/jollyday-0.4.7.jar -O //home/ec2-user/jollyday-0.4.7.jar
+
+#Download java code for the worker
+wget https://s3.amazonaws.com/applicationcode-ds-151-elidor/workerapp.jar -O //home/ec2-user/workerapp.jar
+
+#give executable pesmissions to all files
+chmod -R 777 //home/ec2-user
+
+#run the worker in java
+java -cp .:workerapp.jar:stanford-corenlp-3.3.0.jar:stanford-corenlp-3.3.0-models.jar:ejml-0.23.jar:jollyday-0.4.7.jar -jar //home/ec2-user/workerapp.jar
