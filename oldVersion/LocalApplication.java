@@ -63,9 +63,7 @@ public class LocalApplication {
 		/*credentials = new ProfileCredentialsProvider().getCredentials();*/
 		credentials = new BasicAWSCredentials("AKXXXXXXXXXXXXXX",
 				"YYYYYYYYYYYYYYYYYYYYYYYY");
-		//Eliyahu
-		/*BasicAWSCredentials credentials = new BasicAWSCredentials("AKIAJ5GPL6EZF33TV3SA", 
-				"ou9I2VXTP6BV87Oio6QEji3eEU/8vi3laq3bNZqx");*/
+	
 		ec2 = new AmazonEC2Client(credentials);
 
 		localApplicationId = UUID.randomUUID().toString();
